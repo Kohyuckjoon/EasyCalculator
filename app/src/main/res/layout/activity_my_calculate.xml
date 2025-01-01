@@ -189,6 +189,7 @@
         android:layout_height="wrap_content"
         android:text="C"
         style="@style/numberKeypad"
+        android:onClick="clearButtonClicked"
         tools:ignore="MissingConstraints">
     </Button>
 

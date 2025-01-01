@@ -19,12 +19,21 @@ class MyCalculate : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         databinding = ActivityMyCalculateBinding.inflate(layoutInflater)
-        setContentView(databinding.root)
+        databinding.calculationResult.text = ""
 
+        setContentView(databinding.root)
     }
 
     fun clearButtonClicked(view: View) {
+        Log.e("khj", "view : " + view)
 
+        firstNumberText.clear()
+        secondNumberText.clear()
+        operatorText.clear()
+        updateEquationTextView()
+
+        databinding.calculation.text = ""
+        databinding.calculationResult.text = ""
     }
 
     fun numberClicked(view: View) {
