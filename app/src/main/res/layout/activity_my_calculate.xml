@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/calculation"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="equation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHeight_percent="0.15"
+        android:textSize="40sp"
+        android:gravity="end"
+        android:textColor="#808080"
+        android:layout_margin="15dp">
+    </TextView>
+
+    <TextView
+        android:id="@+id/calculationResult"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:textSize="40sp"
+        android:text="test"
+        android:gravity="end"
+        android:textColor="#009000"
+        android:textStyle="bold"
+        android:layout_margin="10dp"
+        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/keyPadFlowButton">
+    </TextView>
+
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/keyPadFlowButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.7"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="10dp"
+        app:constraint_referenced_ids=
+            "bt_1st, bt_2st, bt_3st, bt_clear,
+            bt_4st, bt_5st, bt_6st, bt_plus,
+            bt_7st, bt_8st, bt_9st, bt_minus,
+            bt_0st, bt_result"
+        app:flow_wrapMode="chain">
+
+
+    </androidx.constraintlayout.helper.widget.Flow>
+
+    <Button
+        android:id="@+id/bt_1st"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1"
+        style="@style/numberKeypad"
+        android:onClick="numberClicked"
+        tools:ignore="MissingConstraints">
+    </Button>
+
+    <Button
+        android:id="@+id/bt_2st"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2"
+        style="@style/numberKeypad"
+        android:onClick="numberClicked"
+        tools:ignore="MissingConstraints">
+    </Button>
+
+    <Button
+        android:id="@+id/bt_3st"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3"
+        style="@style/numberKeypad"
+        android:onClick="numberClicked"
+        tools:ignore="MissingConstraints">
+    </Button>
+
+    <Button
+        android:id="@+id/bt_4st"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="4"
+        style="@style/numberKeypad"
+        android:onClick="numberClicked"
+        tools:ignore="MissingConstraints">
+    </Button>
+
+    <Button
+        android:id="@+id/bt_5st"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="5"
+        style="@style/numberKeypad"
+        android:onClick="numberClicked"
+        tools:ignore="MissingConstraints">
+    </Button>
+
+    <Button
+        android:id="@+id/bt_6st"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="6"
+        style="@style/numberKeypad"
+        android:onClick="numberClicked"
+        tools:ignore="MissingConstraints">
+    </Button>
+
+    <Button
+        android:id="@+id/bt_7st"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="7"
+        style="@style/numberKeypad"
+        android:onClick="numberClicked"
+        tools:ignore="MissingConstraints">
+    </Button>
+
+    <Button
+        android:id="@+id/bt_8st"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="8"
+        style="@style/numberKeypad"
+        android:onClick="numberClicked"
+        tools:ignore="MissingConstraints">
+    </Button>
+
+    <Button
+        android:id="@+id/bt_9st"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="9"
+        style="@style/numberKeypad"
+        android:onClick="numberClicked"
+        tools:ignore="MissingConstraints">
+    </Button>
+
+    <Button
+        android:id="@+id/bt_0st"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        style="@style/numberKeypad"
+        android:onClick="numberClicked"
+        app:layout_constraintHorizontal_weight="1"
+        tools:ignore="MissingConstraints">
+    </Button>
+
+    <Button
+        android:id="@+id/bt_plus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="+"
+        style="@style/numberKeypad"
+        tools:ignore="MissingConstraints">
+    </Button>
+
+    <Button
+        android:id="@+id/bt_minus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-"
+        style="@style/numberKeypad"
+        tools:ignore="MissingConstraints">
+    </Button>
+
+    <Button
+        android:id="@+id/bt_result"
+        android:text="="
+        style="@style/numberKeypad"
+        tools:ignore="MissingConstraints">
+    </Button>
+
+    <Button
+        android:id="@+id/bt_clear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="C"
+        style="@style/numberKeypad"
+        tools:ignore="MissingConstraints">
+    </Button>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

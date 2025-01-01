@@ -1,5 +1,6 @@
 package com.example.chapter5
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -25,6 +26,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.practice.setOnClickListener {
+            val intent = Intent(this@MainActivity, MyCalculate::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 
     fun numberClicked(view : View) {
