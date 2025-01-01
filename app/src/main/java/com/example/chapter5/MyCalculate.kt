@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.chapter5.databinding.ActivityMyCalculateBinding
 import java.text.DecimalFormat
@@ -46,14 +47,28 @@ class MyCalculate : AppCompatActivity() {
         updateEquationTextView()
     }
 
-    fun eqaulsClicked(view: View) {
+    fun myOperatorClicked(view: View) {
+        Log.e("khj ---> ", "clear")
+        val operatorString = (view as? Button)?.text?.toString()?: ""
 
+        if (firstNumberText.isEmpty()) {
+            Toast.makeText(this, "먼저 숫자를 입력하세요.", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        if (secondNumberText.isNotEmpty()) {
+            Toast.makeText(this, "1개의 연산자에 대해서만 연산이 가능합니다..", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        operatorText.append(operatorString)
+        updateEquationTextView()
     }
 
     fun updateEquationTextView() {
-        val firstformattedNubes = if(firstNumberText.isNotEmpty()) decimalFormat.format(firstNumberText.toString().toBigDecimal()) else ""
-        val secondformattedNubes = if(secondNumberText.isNotEmpty()) decimalFormat.format(firstNumberText.toString().toBigDecimal()) else ""
-        databinding.calculation.text = "$firstformattedNubes $operatorText $secondformattedNubes"
+        val firstformattedNumber = if(firstNumberText.isNotEmpty()) decimalFormat.format(firstNumberText.toString().toBigDecimal()) else ""
+        val secondformattedNumber = if(secondNumberText.isNotEmpty()) decimalFormat.format(secondNumberText.toString().toBigDecimal()) else ""
+        databinding.calculation.text = "$firstformattedNumber $operatorText $secondformattedNumber"
     }
 
     fun buttonClick(view: View) {
@@ -68,14 +83,33 @@ class MyCalculate : AppCompatActivity() {
             databinding.bt7st.id -> numberButtonClicked("7")
             databinding.bt8st.id -> numberButtonClicked("8")
             databinding.bt9st.id -> numberButtonClicked("9")
-            
-            databinding.btPlus.id -> numberButtonClicked("+")
-            databinding.btMinus.id -> numberButtonClicked("-")
-            databinding.btResult.id -> numberButtonClicked("=")
         }
     }
 
     fun numberButtonClicked(number: String) {
 
+    }
+
+    fun resultClicked (view: View) {
+        if (firstNumberText.isEmpty() || secondNumberText.isEmpty() || operatorText.isEmpty()) {
+            Toast.makeText(this, "올바르지 않은 수식입니다.", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val firstNumber = firstNumberText.toString().toBigDecimal()
+        val secondNumber = secondNumberText.toString().toBigDecimal()
+
+        val result =
+            when (operatorText.toString()) {
+                "+" -> decimalFormat.format(firstNumber + secondNumber)
+                "-" -> decimalFormat.format(firstNumber - secondNumber)
+
+                else -> {
+                    "잘못된 수식"
+                }
+            }.toString()
+        Log.e("khj", "result ---> " + result)
+
+        databinding.calculationResult.text = result
     }
 }
